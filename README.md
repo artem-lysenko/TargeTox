@@ -1,5 +1,7 @@
 # TargeTox - Biological Network Target-based Drug Toxicity Risk Prediction
 
+!!! 27/10/2018 Update currently in progress and the new version is due to be released shortly !!!
+
 ## Required libraries:
 
   * “catboost” – machine learning library used for implementation of the main model
