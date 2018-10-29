@@ -7,8 +7,8 @@
 # (5-6) Lower and upper plasma protein binding values in a 0-100 range (can be missing)
 #
 # The method returns a single TargeTox score, with higher score indicating higher toxicity risk. Note that these
-# returned values are not probabilities and will not necessarily be within 0-1 range. The optimal cut-off during
-# development was in the region of 0.3 (experimentally confirmed targets from ChEMBL and DrugBank), though we recommend
+# returned values are not probabilities and will not necessarily be within 0-1 range. The optimal cut-offs during
+# development was in the region of -1.3 to -1.5 (experimentally confirmed targets from ChEMBL and DrugBank), though we recommend
 # that users perform their own calibration if using definitions of targets not consistent with ours (e.g. if using
 # computationally predicted drug target sets with high false-positive rates).
 #
@@ -51,11 +51,14 @@ TargetTox = function(targets, administration.oral,
 
     input = as.data.frame(t(as.matrix(input)))
 
-    colnames(input) = c('9606.ENSP00000438284', '9606.ENSP00000232975', '9606.ENSP00000366416',
-        '9606.ENSP00000315654', '9606.ENSP00000261712', '9606.ENSP00000308549', '9606.ENSP00000326042',
-        '9606.ENSP00000281821', '9606.ENSP00000226021', '9606.ENSP00000328625', '9606.ENSP00000447149',
-        '9606.ENSP00000335592', 'drug_ic', 'oral', 'parenteral', 'topical', 'lower', 'higher') 
+    #colnames(input) = c('9606.ENSP00000438284', '9606.ENSP00000232975', '9606.ENSP00000366416',
+    #    '9606.ENSP00000315654', '9606.ENSP00000261712', '9606.ENSP00000308549', '9606.ENSP00000326042',
+    #    '9606.ENSP00000281821', '9606.ENSP00000226021', '9606.ENSP00000328625', '9606.ENSP00000447149',
+    #    '9606.ENSP00000335592', 'drug_ic', 'oral', 'parenteral', 'topical', 'lower', 'higher') 
 
+	colnames(input) = c('n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8', 'n9', 'n10', 'n11',
+        'n12', 'drug_ic', 'oral', 'parenteral', 'topical', 'lower', 'higher') 
+	
     input$oral = factor(input$oral, levels = c('0', '1', '2')) 
     input$parenteral = factor(input$parenteral, levels = c('0', '1', '2')) 
     input$topical = factor(input$topical, levels = c('0', '1', '2')) 
@@ -71,7 +74,7 @@ TargetTox = function(targets, administration.oral,
 
 # Test example
 #ids = c('9606.ENSP00000338072', '9606.ENSP00000237837')
-#administration.oral =0
+#administration.oral = 0
 #administration.parenteral = 1
 #administration.topical = 0
 #protein.binding.lower = NA
