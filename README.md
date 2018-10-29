@@ -1,6 +1,6 @@
 # TargeTox - Biological Network Target-based Drug Toxicity Risk Prediction
 
-!!! 27/10/2018 Update currently in progress and the new version is due to be released shortly !!!
+Last updated on 29/10/2018
 
 ## Required libraries:
 
